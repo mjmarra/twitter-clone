@@ -9,13 +9,6 @@ module.exports = {
       item => item._id.toString() !== req.user._id.toString()
     );
 
-    /* const tweets = await Tweet.find({}).populate("author");
-    res.render("twitter/home", {
-      loggedUser: req.user,
-      tweets,
-      users,
-    }); */
-
     User.findById(req.user._id).then(loggedUser => {
       Tweet.find({ author: loggedUser })
         .populate('author')
@@ -32,20 +25,6 @@ module.exports = {
             });
         });
     });
-
-    // if (req.user.following <= 0) {
-    //   console.log("No sigo a nadie");
-    // } else {
-    //   console.log(req.user.following);
-    //   const usersTweets = await await User.findById(
-    //     req.user.following
-    //   ).populate("tweets");
-
-    //   const { tweets } = usersTweets;
-    //   console.log(tweets);
-
-    //   res.json(tweets);
-    // }
   },
 
   /* NEW TWEET */
@@ -79,14 +58,11 @@ module.exports = {
   userToFollow: (req, res) => {
     const { id } = req.body;
     const userId = req.user._id;
-    // console.log(`Following ${id} // My id: ${userId}`);
 
     User.findById(userId).then(user => {
-      // console.log(typeof user.following[0]);
       if (!user.following.includes(id)) {
         user.following.push(id);
         user.save();
-        // console.log(`Usuario seguido: ${id}`);
 
         User.findById(id).then(userToFollow => {
           userToFollow.followers.push(userId);
@@ -100,7 +76,6 @@ module.exports = {
   },
 
   /* TO UNFOLLOW */
-
   unfollow: async (req, res) => {
     const { id } = req.body;
     req.user.following = req.user.following.filter(

@@ -23,9 +23,6 @@ app.locals.moment = require('moment');
 
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(express.static('public'));
-// app.set('view engine', 'ejs');
-
 /* HAY QUE PASAR ESTO ASÍ PARA QUE FUNCIONE VERCEL */
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));

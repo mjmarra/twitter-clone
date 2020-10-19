@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  'mongodb+srv://root:root@test.txpo3.mongodb.net/ha-tweeter-clone?retryWrites=true&w=majority'
+  'mongodb+srv://root:root@test.txpo3.mongodb.net/test?retryWrites=true&w=majority'
 );
 
 mongoose.connection

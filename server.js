@@ -13,7 +13,7 @@ const seeds = require('./seeds/seeds');
 
 app.locals.moment = require('moment');
 
-seeds();
+// seeds();
 
 const initializePassport = require('./passport-config');
 

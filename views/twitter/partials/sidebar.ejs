@@ -1,0 +1,96 @@
+<div class="sidebar d-flex flex-column justify-content-between">
+  <div class="row">
+    <div class="col">
+      <div>
+        <h3>
+          <a href="/">
+            <i class="fab fa-twitter pl-3 mb-4 pt-3"></i>
+          </a>
+        </h3>
+      </div>
+      <div>
+        <h4>
+          <a href="/">
+            <i class="fas fa-home pl-3 pr-2 mb-4"></i>
+            <span class="d-none d-md-inline-block">
+              Home
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div>
+        <h4>
+          <a href="/">
+            <i class="fas fa-hashtag pl-3 pr-3 mb-4"></i>
+            <span class="d-none d-md-inline-block">
+              Explorar
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div>
+        <h4>
+          <a href="/">
+            <i class="fas fa-bell pl-3 pr-3 mb-4"></i>
+            <span class="d-none d-md-inline-block">
+              Notificaciones
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div>
+        <h4>
+          <a href="/">
+            <i class="fas fa-inbox pl-3 pr-2 mb-4"></i></i>
+            <span class="d-none d-md-inline-block">
+              Mensajes
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div>
+        <h4>
+          <a href="/">
+            <i class="fas fa-bookmark pl-3 pr-3 mb-4"></i>
+            <span class="d-none d-md-inline-block">
+              Guardados
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div>
+        <h4>
+          <a href="/">
+            <i class="fas fa-list-alt pl-3 pr-3 mb-4"></i>
+            <span class="d-none d-md-inline-block">
+              Listas
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div>
+        <h4>
+          <a href="/profile/<%= loggedUser.username %> ">
+            <i class="fas fa-user pl-3 pr-3 mb-4"></i>
+            <span class="d-none d-md-inline-block">
+              Perfil
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div>
+        <a href="#" data-toggle="modal" data-target="#tweet-modal"
+          class="btn btn-twitter btn-block rounded-pill mt-5">Twittear</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="mb-3">
+        <a href="/admin/logout" class="btn btn-block  btn-outline-twitter rounded-pill  mt-5">Logout</a>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head') -%>
+
+<body>
+  <div class="page-wrapper">
+    <div class="row">
+      <div class="col-sm-3"><%- include('partials/sidebar') -%></div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="main-wrapper">
+              <h4 class="pl-4"><%= user.firstname %> <%= user.lastname %></h4>
+              <hr />
+              <div class="media d-flex justify-content-between mb-3">
+                <div>
+                  <img src="<%= user.image %> " alt="Foto" class="avatar-profile mr-3" />
+                </div>
+                <div>
+                  <% if ((loggedUser._id).toString() ===
+                    (user._id).toString()) { %>
+                  <a href="" class="btn btn-outline-twitter rounded-pill mt-5">
+                    Configurar perfil
+                  </a>
+                  <% } else { %> <% if
+                    (!loggedUser.following.includes(user._id)) { %>
+                  <form action="/following" method="POST">
+                    <button type="submit" class="btn btn-twitter rounded-pill mt-5" name="id" value="<%= user.id %>">
+                      Seguir
+                    </button>
+                  </form>
+                  <% } else { %>
+                  <form action="/unfollow" method="POST">
+                    <button type="submit" class="btn btn-twitter rounded-pill mt-5" name="id" value="<%= user.id %>">
+                      Dejar de seguir
+                    </button>
+                  </form>
+                  <% } %> <% } %>
+                </div>
+              </div>
+              <div class="personal-info">
+                <h6><%= user.firstname %> <%= user.lastname %></h6>
+                <p class="my-0">@<%= user.username %></p>
+                <p class="my-0">Se unió en enero de 2015</p>
+                <p class="my-0">
+                  <span><%= user.following.length %> siguiendo</span>
+                  <span><%= user.followers.length %> seguidores</span>
+                </p>
+                <p class="mt-4">Tweets</p>
+              </div>
+              <hr class="my-4" />
+              <% user.tweets.reverse().forEach(tweet => { %>
+              <div class="media">
+                <div>
+                  <img src="<%= user.image %> " alt="Foto" class="avatar-home mr-3" />
+                </div>
+                <div class="media-body">
+                  <p class="my-0 d-inline-block">
+                    <%= user.firstname %> <%= user.lastname %>
+                  </p>
+                  <span class="text-muted"><%= `@${user.username}` %></span>
+
+                  <p class="my-0"><%= tweet.content %></p>
+                  <small class="my-0 text-muted">
+                    <%= moment(tweet.createdAt).format(`DD/MM/YYYY -
+                      HH:mm:ss`) %>
+                  </small>
+                  <small class="my-0 text-muted ml-4 mr-1">
+                    <%= tweet.likes %>
+                  </small>
+                  <a href="/like/<%= tweet._id %>" class="text-muted"><i class="far fa-heart fa-xs"></i></a>
+                  <a href="/delete/<%= tweet._id %>" class="text-muted ml-3"><i class="fas fa-trash-alt fa-xs"></i></a>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <% }) %>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="lateral-sidebar">
+              <h5>A quién seguir</h5>
+              <% for( let i = 0; i < 8; i++ ) { %>
+              <div class="media my-3">
+                <div>
+                  <img src="<%= users[i].image %> " alt="Foto" class="avatar-small mr-3" />
+                </div>
+                <div class="media-body">
+                  <a href="/profile/<%= users[i].username %>">
+                    <p class="my-0 profile-link">
+                      <%= users[i].firstname %> <%= users[i].lastname %>
+                    </p>
+                  </a>
+                  <p class="my-0 text-muted">
+                    <%= `@${users[i].username}` %>
+                  </p>
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/tweet-modal') -%> <%- include('partials/scripts') -%>
+</body>
+
+</html>

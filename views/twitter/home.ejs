@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') -%>
+
+<body>
+  <div class="page-wrapper">
+    <div class="row">
+      <div class="col-sm-3"><%- include('partials/sidebar') -%></div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="main-wrapper">
+              <h4 class="pl-4">Inicio</h4>
+              <hr />
+
+              <form action="/tweet" method="POST">
+                <div class="media">
+                  <div>
+                    <img src="<%= loggedUser.image %> " alt="Profile picture" class="avatar-home mr-3" />
+                  </div>
+                  <div class="media-body">
+                    <div class="form-group">
+                      <input type="text" class="form-control bg-transparent text-light" name="content"
+                        placeholder="¿Qué está pasando?" autocomplete="off" />
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right pr-4">
+                  <button type="submit" class="btn btn-twitter rounded-pill px-3 my-2">
+                    Twittear
+                  </button>
+                </div>
+              </form>
+              <hr class="my-4" />
+
+              <% tweets.reverse().forEach(tweet => { %>
+              <div class="media">
+                <div>
+                  <img src="<%= tweet.author.image %> " alt="Foto" class="avatar-home mr-3" />
+                </div>
+                <div class="media-body">
+                  <a href="/profile/<%= tweet.author.username %> ">
+                    <p class="my-0 profile-link d-inline-block">
+                      <%= tweet.author.firstname %> <%= tweet.author.lastname
+                        %>
+                    </p>
+                    <span class="text-muted"><%= `@${tweet.author.username}` %></span>
+                  </a>
+                  <p class="my-0"><%= tweet.content %></p>
+                  <small class="my-0 text-muted">
+                    <%= moment(tweet.createdAt).format(`DD/MM/YYYY -
+                      HH:mm:ss`) %>
+                  </small>
+                  <small class="my-0 text-muted ml-4 mr-1">
+                    <%= tweet.likes %>
+                  </small>
+                  <a href="/like/<%= tweet._id %>" class="text-muted"><i class="far fa-heart fa-xs"></i></a>
+                </div>
+                <% if ((loggedUser._id).toString() === (tweet.author._id).toString()) { %>
+                <% } else  { %>
+                <form action="/unfollow" method="POST">
+                  <button type="submit" class="btn btn-twitter btn-sm rounded-pill mx-3 mt-3" name="id"
+                    value="<%= tweet.author.id %>">
+                    Dejar de seguir
+                  </button>
+                </form>
+                <% } %>
+              </div>
+              <hr class="my-4" />
+              <% }) %>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="lateral-sidebar">
+              <h5>A quién seguir</h5>
+              <% for( let i = 0; i < 8; i++ ) { %>
+              <div class="media my-3">
+                <div>
+                  <img src="<%= users[i].image %> " alt="Foto" class="avatar-small mr-3" />
+                </div>
+                <div class="media-body">
+                  <a href="/profile/<%= users[i].username %> ">
+                    <p class="my-0 profile-link">
+                      <%= users[i].firstname %> <%= users[i].lastname %>
+                    </p>
+                  </a>
+                  <p class="my-0 text-muted">
+                    <%= `@${users[i].username}` %>
+                  </p>
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/tweet-modal') -%> <%- include('partials/scripts') -%>
+</body>
+
+</html>

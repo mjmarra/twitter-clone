@@ -1,0 +1,213 @@
+body {
+	background-color: #15202b;
+	color: #ffffff;
+	overflow-x: hidden;
+}
+
+.bg-custom {
+	background-color: #15202b;
+}
+
+.avatar-home {
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+	width: 3rem;
+	height: 3rem;
+}
+
+.avatar-profile {
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+	width: 8rem;
+	height: 8rem;
+}
+
+.avatar-small {
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+	width: 2rem;
+	height: 2rem;
+}
+
+hr {
+	border: 1px solid #253341;
+	background-color: #253341;
+}
+
+.lateral-sidebar {
+	margin: 4rem 3rem;
+}
+
+.lateral-sidebar p {
+	font-size: 0.9rem;
+}
+
+.sidebar {
+	position: fixed;
+	min-width: 25%;
+	height: 100vh;
+	padding: 0.5rem 2rem 0.5rem 5rem;
+}
+
+.sidebar h4 {
+	font-size: 1.2rem;
+}
+
+.form-wrapper {
+	margin-top: 6rem;
+}
+
+.content-wrapper {
+	margin: 0 1rem;
+	padding-top: 1.5rem;
+}
+
+.main-wrapper {
+	min-height: 100vh;
+	border-left: 1px solid #253341;
+	border-right: 1px solid #253341;
+	padding-top: 1rem;
+}
+
+.main-wrapper .media {
+	padding: 0 1rem;
+}
+
+.personal-info {
+	padding: 0 1rem;
+}
+
+p {
+	line-height: 1.3125;
+}
+
+/* BUTTONS */
+
+.btn-twitter {
+	background-color: #1da1f2;
+	color: #fff;
+}
+.btn-twitter:hover {
+	background-color: #1a94e0;
+	color: #fff;
+}
+
+.btn-outline-twitter {
+	border-color: #1da1f2;
+	color: #1da1f2;
+	background-color: transparent;
+}
+.btn-outline-twitter:hover {
+	border-color: #1a94e0;
+	color: #1a94e0;
+	background-color: #1a94e02a;
+}
+
+/* LINKS */
+a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.modal-content {
+	border-radius: 1rem;
+}
+
+.modal span {
+	color: #1da1f2;
+	border-color: #1da1f2;
+	text-shadow: none;
+	font-size: 2rem;
+}
+
+.modal textarea {
+	border: none;
+	resize: none;
+}
+
+.modal textarea:focus {
+	border: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.main-wrapper .form-control {
+	border: none;
+}
+.main-wrapper .form-control:focus {
+	box-shadow: none;
+	outline: none;
+}
+
+.modal-backdrop {
+	background-color: rgba(255, 255, 255, 0.432);
+}
+
+.profile-link {
+	font-weight: 600;
+	font-size: 1rem;
+}
+
+.profile-link:hover {
+	text-decoration: underline;
+	color: #fff;
+}
+
+/* LOGIN AND SIGN UP */
+
+.login-signup-wrapper {
+	height: 100vh;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	background-color: #15202b;
+	min-width: 10rem;
+	grid-template-columns: 1fr;
+	padding: 0 5rem;
+}
+
+.intro {
+	height: 100vh;
+	background-image: url("../img/Twitter-Logo.svg");
+	background-size: cover;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+	-webkit-text-fill-color: #fff;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+	.sidebar {
+		position: relative;
+	}
+	.sidebar h4 {
+		font-size: 0.9rem;
+	}
+	p {
+		font-size: 0.9rem;
+	}
+}
+
+@media (min-width: 1400px) {
+	.sidebar {
+		min-width: 15rem;
+	}
+	.page-wrapper {
+		margin: auto;
+		max-width: 1400px;
+	}
+}

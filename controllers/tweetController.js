@@ -95,7 +95,7 @@ module.exports = {
     console.log(req.user.following);
   },
 
-  /* LIKES (en realidad creo que debería ser un array) */
+  /* LIKES */
   like: (req, res) => {
     Tweet.findById(req.params.id).then(tweet => {
       tweet.likes += 1;

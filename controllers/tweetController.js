@@ -34,7 +34,7 @@ module.exports = {
       author: req.user._id,
       content,
       date: Date.now(),
-      likes: 0,
+      likes: [],
     });
     await newTweet.save();
 

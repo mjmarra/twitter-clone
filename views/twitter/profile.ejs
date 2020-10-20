@@ -17,13 +17,11 @@
                   <img src="<%= user.image %> " alt="Foto" class="avatar-profile mr-3" />
                 </div>
                 <div>
-                  <% if ((loggedUser._id).toString() ===
-                    (user._id).toString()) { %>
+                  <% if ((loggedUser._id).toString() === (user._id).toString()) { %>
                   <a href="" class="btn btn-outline-twitter rounded-pill mt-5">
                     Configurar perfil
                   </a>
-                  <% } else { %> <% if
-                    (!loggedUser.following.includes(user._id)) { %>
+                  <% } else if (!loggedUser.following.includes(user._id)) { %>
                   <form action="/following" method="POST">
                     <button type="submit" class="btn btn-twitter rounded-pill mt-5" name="id" value="<%= user.id %>">
                       Seguir
@@ -35,7 +33,7 @@
                       Dejar de seguir
                     </button>
                   </form>
-                  <% } %> <% } %>
+                  <% } %>
                 </div>
               </div>
               <div class="personal-info">
@@ -69,7 +67,9 @@
                     <%= tweet.likes.length %>
                   </small>
                   <a href="/like/<%= tweet._id %>" class="text-muted"><i class="far fa-heart fa-xs"></i></a>
+                  <% if ((loggedUser._id).toString() === (tweet.author._id).toString()) { %>
                   <a href="/delete/<%= tweet._id %>" class="text-muted ml-3"><i class="fas fa-trash-alt fa-xs"></i></a>
+                  <% } %>
                 </div>
               </div>
               <hr class="my-4" />

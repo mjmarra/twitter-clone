@@ -98,9 +98,14 @@ module.exports = {
   /* LIKES */
   like: async (req, res) => {
     const tweet = await Tweet.findById(req.params.id);
-    tweet.likes.push(req.user._id);
+    if (tweet.likes.includes(req.user._id.toString())) {
+      tweet.likes = tweet.likes.filter(
+        item => item.toString() !== req.user._id.toString()
+      );
+    } else {
+      tweet.likes.push(req.user._id);
+    }
     await tweet.save();
-    console.log(tweet.likes);
     res.redirect('back');
   },
 

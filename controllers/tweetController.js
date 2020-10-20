@@ -100,6 +100,7 @@ module.exports = {
     const tweet = await Tweet.findById(req.params.id);
     tweet.likes.push(req.user._id);
     await tweet.save();
+    console.log(tweet.likes);
     res.redirect('back');
   },
 

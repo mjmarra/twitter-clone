@@ -108,13 +108,4 @@ module.exports = {
     await tweet.save();
     res.redirect('back');
   },
-
-  /* UNLIKE */
-  // unLike: (req, res) => {
-  //   Tweet.findById(req.params.id).then(tweet => {
-  //     tweet.likes -= 1;
-  //     tweet.save();
-  //     res.redirect('back');
-  //   });
-  // },
 };

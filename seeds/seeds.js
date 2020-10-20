@@ -18,10 +18,7 @@ module.exports = async () => {
         author: user,
         content: faker.lorem.sentence(12),
         date: faker.date.recent(),
-        likes: faker.random.number({
-          min: 0,
-          max: 1000,
-        }),
+        likes: [],
       });
       await tweet.save();
       user.tweets.push(tweet);

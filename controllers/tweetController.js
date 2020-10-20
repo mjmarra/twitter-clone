@@ -96,12 +96,11 @@ module.exports = {
   },
 
   /* LIKES */
-  like: (req, res) => {
-    Tweet.findById(req.params.id).then(tweet => {
-      tweet.likes += 1;
-      tweet.save();
-      res.redirect('back');
-    });
+  like: async (req, res) => {
+    const tweet = await Tweet.findById(req.params.id);
+    tweet.likes.push(req.user._id);
+    await tweet.save();
+    res.redirect('back');
   },
 
   /* UNLIKE */

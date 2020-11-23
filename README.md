@@ -1,1 +1,1 @@
-Twiter clone
+Twiter clone using MongoDB, Node.js, ejs
